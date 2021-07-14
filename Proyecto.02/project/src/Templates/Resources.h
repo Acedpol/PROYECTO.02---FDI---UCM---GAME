@@ -233,6 +233,11 @@ public:
 		CofreVacio,
 		CofreLleno,
 
+		//Llaves
+		LlaveCofre,
+		LlaveNivel,
+		LlaveVacia,
+
 		//Ficha DD
 		Pergamino,
 		//Panel Desc.
@@ -319,6 +324,11 @@ public:
 		Espinas_,
 		//Danyo
 		slash,
+		//Taberna
+		tabernaLobby,
+		tabernaShop,
+		tabernaStash,
+		bartender,
 	}; using txtID = TextureId;
 
 	enum AudioId : std::size_t {

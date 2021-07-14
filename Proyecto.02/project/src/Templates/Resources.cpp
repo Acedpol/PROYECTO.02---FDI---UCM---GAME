@@ -209,6 +209,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{CofreCerrado, "project/resources/images/sprites/cofre/cofreCerrado.PNG" },
 	{CofreVacio, "project/resources/images/sprites/cofre/cofreAbierto.PNG" },
 	{CofreLleno, "project/resources/images/sprites/cofre/cofreLuz.PNG" },
+
+	//Llaves
+	{LlaveCofre, "project/resources/images/sprites/llaves/chestKey.png" },
+	{LlaveNivel, "project/resources/images/sprites/llaves/levelKey.png" },
+	{LlaveVacia, "project/resources/images/sprites/llaves/emptykey.png" },
+
 	// Ficha DD
 	{Pergamino, "project/resources/images/sprites/iconos ficha/pergamino.png"},
 	// Panel Desc.
@@ -312,7 +318,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ foco_minimapa, "project/resources/images/interfaz/focos/foco_minimapa.png" },
 	{ cinematica, "project/resources/images/interfaz/focos/cinematica.png" },
 	//Danyo
-	{ slash, "project/resources/images/sprites/animaciones/heroes danyo/slashSheet.png" }
+	{ slash, "project/resources/images/sprites/animaciones/heroes danyo/slashSheet.png" },
+	//Taberna
+	{ tabernaLobby, "project/resources/images/interfaz/lobby/TabernaLobby.jpg" },
+	{ tabernaShop, "project/resources/images/interfaz/lobby/TabernaShop.jpg" },
+	{ tabernaStash, "project/resources/images/interfaz/lobby/TabernaStash.jpg" },
+	{ bartender, "project/resources/images/sprites/animaciones/taberneroSheet.png" }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

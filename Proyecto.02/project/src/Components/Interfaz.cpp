@@ -272,7 +272,9 @@ void Interfaz::createInfo()
 void Interfaz::createInventory()
 {
     SDLGame* game_ = entity_->getSDLGame();
-    vector<Item*> items = TheElementalMaze::instance()->getPartyManager()->getItems();
+    PartyManager* party = TheElementalMaze::instance()->getPartyManager();
+
+    vector<Item*> items = party->getItems();
     double slotTam = game_->getWindowWidth() / 16;
     double posX;
     double posY = slotTam * 0.8;
@@ -288,7 +290,7 @@ void Interfaz::createInventory()
     uint pivot, auxId;
     for (int i = 0; i < 5; ++i) {
 
-        posX = slotTam * 1.5; //Se resetea la coordenada X
+        posX = slotTam * 2.2; //Se resetea la coordenada X
 
         for (int j = 0; j < 5; ++j) {
             p->addButton(iManager->addButton<SDL_Object>(Vector2D(posX, posY), slotTam, slotTam, src::Slot));
@@ -321,7 +323,7 @@ void Interfaz::createInventory()
 
     }
 
-    posX += slotTam; // Se suma la coordenada X dejando un espacio.
+    posX += slotTam * 0.3; // Se suma la coordenada X dejando un espacio.
     posY = slotTam * 0.8;
 
 
@@ -359,6 +361,35 @@ void Interfaz::createInventory()
 
         posY += slotTam * 1.33;
     }
+
+    //Llaves
+    bool levelKey = party->getLevelKey();
+    uint chestKeys = party->getChestKeys();
+    slotTam = slotTam * 0.6;
+
+        //Llaves de cofres
+    posX = slotTam * 1.1; //Se resetea la coordenada X
+    posY = slotTam / 0.6;
+
+    SDL_Color color = { 255,255,255,255 };
+    string text = "x" + to_string(chestKeys);
+    SDL_Rect dest;
+    dest.x = posX * 1.1 + slotTam;
+    dest.y = posY;
+    dest.h = slotTam;
+    dest.w = slotTam;
+
+    if (chestKeys > 0) p->addButton(iManager->addButton<SDL_Object>(Vector2D(posX, posY), slotTam, slotTam, src::LlaveCofre));
+    else               p->addButton(iManager->addButton<SDL_Object>(Vector2D(posX, posY), slotTam, slotTam, src::LlaveVacia));
+
+    p->addButton(iManager->addButton<Line>(dest, text, Resources::FontId::HERMAN, color));
+
+        //Llaves de puerta
+    posY += slotTam * 1.5;
+
+    if (levelKey)   p->addButton(iManager->addButton<SDL_Object>(Vector2D(posX, posY), slotTam, slotTam, src::LlaveNivel));
+    else            p->addButton(iManager->addButton<SDL_Object>(Vector2D(posX, posY), slotTam, slotTam, src::LlaveVacia));
+    
 }
 
 void Interfaz::createChest()
@@ -373,7 +404,11 @@ void Interfaz::createChest()
     Panel* p = new Panel(ActivateChest);
     allPanels[ActivateChest] = p;
     togglePanel(ActivateChest);
-    p->addButton(iManager->addButton<ButtonPanel>(Vector2D(x_, y_), w_, h_, src::Inventario, _ChestPanel_, false));
+    game_->setHorizontalScale(x_);
+    game_->setHorizontalScale(w_);
+    game_->setVerticalScale(y_);
+    game_->setVerticalScale(h_);
+    p->addButton(iManager->addButton<ButtonPanel>(Vector2D(x_, y_), w_, h_, src::Joker, _ChestPanel_, false));
 }
 
 void Interfaz::createFichaDD(uint nCharacter)
@@ -644,16 +679,18 @@ void Interfaz::createLobby() // botones principales
     allPanels[Lobby] = p;
 
     string text;
+    string text2;
     SDL_Color color;
 
     createPanel(Heroes);
 
     // TITLE
-    color = { 205,105,0,255 };
-    text = "Your combat team";
+    color = { 205,105,225,255 };
+    text = "Bienvenido a la taberna";
+    text2 = "¿Una copa?¿";
 
     SDL_Panel pan;
-    pan = game_->relativePanel(70, 70, 1340, 610, 11, 6, 20, 20);
+    pan = game_->relativePanel(70, 70, 1370, 650, 11, 6, 20, 20);
     SDL_Rect dest = RECT(
         pan.fcx + (pan.fcx + 20) * 3,
         pan.fcy,
@@ -661,7 +698,11 @@ void Interfaz::createLobby() // botones principales
         pan.ch
     );
 
+    p->addButton(iManager->addButton<SDL_Object>(Vector2D(40, 40), pan.w, pan.h, src::tabernaLobby));
     p->addButton(iManager->addButton<Line>(dest, text, Resources::FontId::Beaulieux, color));
+
+    p->addButton(iManager->addButton<Line>(Vector2D(pan.fcx + (pan.fcx + 20) * 3, pan.fcy + 100), pan.cw * 3, pan.ch, text2, Resources::FontId::Beaulieux, color));
+    p->addButton(iManager->addButton<SDL_Object>(Vector2D(650, 100), 250, pan.h - 55, src::bartender, true));
 
     //p->addButton(iManager->addButton<SDL_Object>(dest, src::mFondo));
 
@@ -735,7 +776,7 @@ void Interfaz::createShop() // tienda con heroes y objetos
     LobbyManager* loManager = TheElementalMaze::instance()->getLobbyManager();
     if (loManager->getLobbyStore() != nullptr)
     {
-        pan = game_->relativePanel(70, 70, 1340, 610, 11, 6, 20, 20);
+        pan = game_->relativePanel(70, 70, 1370, 650, 11, 5, 20, 20);
         dest = RECT(
             pan.fcx + (pan.fcx + 20) * 3,
             pan.fcy,
@@ -744,7 +785,8 @@ void Interfaz::createShop() // tienda con heroes y objetos
         );
 
         text = "Shop";
-        color = { 155,155,0,255 };
+        color = { 155,155,155,255 };
+        p->addButton(iManager->addButton<SDL_Object>(Vector2D(40, 40), pan.w, pan.h, src::tabernaShop));
         p->addButton(iManager->addButton<Line>(dest, text, Resources::FontId::HERMAN, color));
 
         dest.x = pan.lcx;
@@ -752,7 +794,7 @@ void Interfaz::createShop() // tienda con heroes y objetos
         dest.h = pan.ch / 2;
         // Dinero del jugador
         text = to_string(loManager->getPlayerStash()->gold);
-        color = { 155,155,0,255 };
+        color = { 155,155,255,255 };
         p->addButton(iManager->addButton<Line>(dest, text, Resources::FontId::HERMAN, color));
 
         dest = RECT(
@@ -878,14 +920,14 @@ void Interfaz::createStash() // stash de objetos y heroes en tienda
     // Botón para volver al lobby (LOBBY)
     p->addButton(iManager->addButton<ButtonMenu>(dest, src::lobby_button, accionMenu::stash_lobby, this));
 
-    pan = game_->relativePanel(70, 70, 1340, 610, 11, 5, 20, 20);
+    pan = game_->relativePanel(70, 70, 1370, 650, 11, 5, 20, 20);
     dest = RECT(
         pan.fcx,
         pan.fcy,
         pan.cw * 10,
         pan.ch
     );
-
+    p->addButton(iManager->addButton<SDL_Object>(Vector2D(40, 40), pan.w, pan.h, src::tabernaStash));
     // Slots del stash de héroes: filas de slots conjuntas
     p->addButton(iManager->addButton<SDL_Object>(dest, src::inventory_slots));
     dest.y = dest.y + dest.h;
@@ -1450,13 +1492,21 @@ void Interfaz::createPanel(idPanel panelID)
         createChest();
         break;
     case _ChestPanel_:
-        togglePanel(Heroes);
-        if (GETCMP2(TheElementalMaze::instance(),ChestPanel) == NULL)
-        {
-            Panel* p = new Panel(_ChestPanel_);
-            allPanels[_ChestPanel_] = p;
-            TheElementalMaze::instance()->addComponent<ChestPanel>(TheElementalMaze::instance()->getLaberinto()->getCasillaInfo(GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getX(), GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getY())->getChest());
+        if (TheElementalMaze::instance()->getLaberinto()->getCasillaInfo(GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getX(), GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getY())->getChest()->getAlreadyOpen()) {
+            if (GETCMP2(TheElementalMaze::instance(), ChestPanel) == NULL)
+            {
+                togglePanel(Heroes);
+                Panel* p = new Panel(_ChestPanel_);
+                allPanels[_ChestPanel_] = p;
+                TheElementalMaze::instance()->addComponent<ChestPanel>(TheElementalMaze::instance()->getLaberinto()->getCasillaInfo(GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getX(), GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getY())->getChest());
+            }
+            else closeChest();
         }
+        else if (TheElementalMaze::instance()->getPartyManager()->hasChestKeys()) {
+            TheElementalMaze::instance()->getLaberinto()->getCasillaInfo(GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getX(), GETCMP2(TheElementalMaze::instance()->getPlayer(), MazePos)->getPos().getY())->getChest()->setAlreadyOpen(true);
+            TheElementalMaze::instance()->getPartyManager()->useChestKey();
+        }
+            
         break;
     case Targets:
         createTargets();
@@ -1808,4 +1858,12 @@ void Interfaz::checkHerosParty()
 void Interfaz::enemyDead(int indice) {
     Panel* p = allPanels[Enemies];
     p->removeButton(indice);
+}
+
+void Interfaz::closeChest()
+{
+    if (getActivePan(_ChestPanel_))
+        removePanel(_ChestPanel_);
+    togglePanel(Heroes);
+    TheElementalMaze::instance()->removeComponent(ecs::CmpId::ChestPanel);
 }

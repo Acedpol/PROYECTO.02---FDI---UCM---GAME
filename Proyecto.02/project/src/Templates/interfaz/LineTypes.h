@@ -7,7 +7,8 @@ enum class LineColor {
 	Yellow,
 	Green,
 	Red,
-	Blue
+	Blue,
+	Black
 }; using linCol = LineColor;
 
 class LineTypes
@@ -24,6 +25,7 @@ public:
 		lineTypesMap_[linCol::Green] = hex2sdlcolor("#00FF00FF");
 		lineTypesMap_[linCol::Red] = hex2sdlcolor("#FF0000FF");
 		lineTypesMap_[linCol::Blue] = hex2sdlcolor("#0055FFFF");
+		lineTypesMap_[linCol::Black] = hex2sdlcolor("#000000FF");
 	};
 
 };

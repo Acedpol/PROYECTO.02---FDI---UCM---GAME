@@ -17,15 +17,15 @@ public:
 	void Init(SDL_Rect bottom_elem, tb_Mngr* mngr);
 
 	// methods to access and interact by inserting lines
-	void add(std::string line, LineColor type);
-	void clean_n_addLine(std::string line, LineColor type, bool makeTitle = false);
+	void add(std::string line, LineColor type, Resources::FontId font = src::ConsoleBO);
+	void clean_n_addLine(std::string line, LineColor type, bool makeTitle = false, Resources::FontId font = src::ConsoleBO);
 	
 private:
 	// main way to insert a line
-	void addLine(std::string line, LineColor type);
+	void addLine(std::string line, LineColor type, Resources::FontId font = src::ConsoleBO);
 
 	// checkers of the differents sizes
-	bool checkLineSize(std::string line, LineColor type);
+	bool checkLineSize(std::string line, LineColor type, Resources::FontId font = src::ConsoleBO);
 
 	// cuts the line avoiding to cut the last word
 	string cutLine(string line);

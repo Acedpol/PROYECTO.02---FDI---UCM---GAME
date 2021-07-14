@@ -13,32 +13,32 @@ void TextBlockResources::Init(SDL_Rect bottom_elem, tb_Mngr* mngr)
 }
 
 // checks if they are in their standar position and then insert a new line
-void TextBlockResources::add(std::string line, LineColor type)
+void TextBlockResources::add(std::string line, LineColor type, Resources::FontId font)
 {
 	reset(mngr_->entities, bottomElement_, limits_);
-	addLine(line, type);
+	addLine(line, type, font);
 }
 
 // cleans all the chat and insert a new line, it can be a title
-void TextBlockResources::clean_n_addLine(std::string line, LineColor type, bool makeTitle)
+void TextBlockResources::clean_n_addLine(std::string line, LineColor type, bool makeTitle, Resources::FontId font)
 {
 	cleanALL(mngr_->entities);
 	isTitle_ = makeTitle;
-	addLine(line, type);
+	addLine(line, type, font);
 }
 
 //--- PRIVATE ------------------------------------------------------------------------
 
 // inserts another line, checking the line size and the format
-void TextBlockResources::addLine(std::string line, LineColor type)
+void TextBlockResources::addLine(std::string line, LineColor type, Resources::FontId font)
 {
-	if (!checkLineSize(line, type)) {
+	if (!checkLineSize(line, type, font)) {
 		for (auto it = mngr_->entities.begin(); it != mngr_->entities.end(); it++) {
 			moveUp(it->get(), bottomElement_.h);
 		}
 		if (line.size() > 0) {
 			line = formatLine(line);
-			mngr_->addLine(bottomElement_, line, lineTypesMap_[type], isTitle_);
+			mngr_->addLine(bottomElement_, line, lineTypesMap_[type], isTitle_, font);
 			if (isTitle_) isTitle_ = false;
 		} 
 		else {
@@ -48,14 +48,14 @@ void TextBlockResources::addLine(std::string line, LineColor type)
 }
 
 // checks the size of the line, if it exceeds the limit the line will be cut
-bool TextBlockResources::checkLineSize(std::string line, LineColor type)
+bool TextBlockResources::checkLineSize(std::string line, LineColor type, Resources::FontId font)
 {
 	bool cut = false;
 	if (line.size() > lineLetters_) {
 		string lin = cutLine(line);
-		addLine(lin, type);
+		addLine(lin, type, font);
 		string lin2 = line.substr(lin.size());
-		addLine(lin2, type);
+		addLine(lin2, type, font);
 		cut = true;
 	}
 	return cut;

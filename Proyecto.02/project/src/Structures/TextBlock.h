@@ -25,6 +25,12 @@ public:
 	void update() override;
 	void draw() override;
 
+	// -----
+	void setFondo(src::TextureId image);
+	void initByFile(string const& file);
+	// -----
+	vector<string> readFile(string const& file);
+	void addText(vector<string> const& text);
 };
 
 #pragma endregion

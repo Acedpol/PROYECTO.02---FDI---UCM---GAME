@@ -18,7 +18,7 @@ void TextBlock::Init(SDL_Panel pan)
 
 void TextBlock::update()
 {
-	ElementsResources::checkBlockSize(entities, numLines_);
+	if (ElementsResources::checkBlockSize_reduce(entities, numLines_)) removeEntity(entities.begin()->get());
 }
 
 void TextBlock::draw()
@@ -33,14 +33,12 @@ void TextBlock::setFondo(src::TextureId image)
 	fondo_->addComponent<Image>(game_->getTextureMngr()->getTexture(image));
 }
 
-void TextBlock::initByFile(string const& file)
+void TextBlock::initByFile(string const& file, location lo, src::FontId font)
 {
-	vector<string> text = readFile(file);
-
-	SDL_Panel pan = game_->relativePanel(70, 360, 630, 330, 1, 15, 20, 10);
+	SDL_Panel pan = game_->relativePanel(70, 360, 950, 330, 1, 15, 30, 10);
 	ObjectPanel::Init(pan);
 	TextBlockResources::Init(bottomElement(), this, set_FE::DOWN);
-	TextBlockResources::set_line_letters(35);
+	TextBlockResources::set_line_letters(set_NumLetterInARow());
 
 	// fondo oscuro
 	fondo_ = new Entity(game_, this);
@@ -48,44 +46,12 @@ void TextBlock::initByFile(string const& file)
 	fondo_->addComponent<Transform>(dest);
 	fondo_->addComponent<Image>(game_->getTextureMngr()->getTexture(src::Cartelito));
 
-	addText(text);	
+	TextBlockResources::writeText(file, lo, font);
+	TextBlockResources::resetToBottom(entities, bottomElement(), tuppleLimits());
+	TextBlockResources::resetToTop(entities, topElement(), tuppleLimits());
 }
 
-vector<string> TextBlock::readFile(string const& file)
-{
-	vector<string> text;
-
-	//ifstream fe("C:/ruta/archivo.txt");
-	ifstream input;
-	input.open(file);
-
-	string cadena = "";
-	if (!input.is_open()) throw("No se encuentra el fichero");
-	else {
-		while (!input.eof()) {
-			string line = "";
-			getline(input, line);
-
-			text.push_back(line);
-
-			cout << line << endl;
-		}
-	}
-	input.close();
-	//system("pause");
-
-	return text;
-}
-
-void TextBlock::addText(vector<string> const& text)
-{
-	bool title_done = false;
-	for (int i = text.size() - 1; i >= 0; i--)
-	{
-		if (!title_done) {
-			clean_n_addLine(text[i], LineColor::White, true, src::ConsoleBO);
-			title_done = true;
-		}
-		else add(text[i], LineColor::White, src::Beaulieux);
-	}
+uint TextBlock::set_NumLetterInARow()
+{	
+	return uint(marco_.w * 35.0 / game_->setHorizontalScale(630));
 }

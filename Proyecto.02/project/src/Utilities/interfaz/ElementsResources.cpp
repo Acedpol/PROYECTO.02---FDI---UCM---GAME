@@ -40,10 +40,10 @@ void ElementsResources::reset(const std::vector<std::unique_ptr<Entity>>& entiti
 // restores initial position (scroll hacia arriba completo)
 void ElementsResources::resetToTop(const std::vector<std::unique_ptr<Entity>>& entities, SDL_Rect topElement, Tupple limits)
 {
-	Transform* tr_ = GETCMP2(entities.rbegin()->get(), Transform);
+	Transform* tr_ = GETCMP2(entities.begin()->get(), Transform);
 	double y = tr_->getPos().getY();					// check last line
 
-	while (y != topElement.y && (y + topElement.h) <= limits.getLeft()) {
+	while (y != topElement.y && (y - topElement.h) >= limits.getLeft()) {
 		for (auto it = entities.begin(); it != entities.end(); it++) {
 			moveUp(it->get(), topElement.h);			// move up
 		}
@@ -54,7 +54,7 @@ void ElementsResources::resetToTop(const std::vector<std::unique_ptr<Entity>>& e
 // restores initial position (scroll hacia abajo completo)
 void ElementsResources::resetToBottom(const std::vector<std::unique_ptr<Entity>>& entities, SDL_Rect bottomElement, Tupple limits)
 {
-	Transform* tr_ = GETCMP2(entities.rbegin()->get(), Transform);
+	Transform* tr_ = GETCMP2(entities.begin()->get(), Transform);
 	double y = tr_->getPos().getY();					// check last line
 
 	while (y != bottomElement.y && (y + bottomElement.h) <= limits.getRight()) {
@@ -89,11 +89,12 @@ bool ElementsResources::checkTopDownMax(double y, Tupple limits)
 }
 
 // comprueba si sobrepasa el limite de elementos en el bloque, si es asi borrar el primero en entrar
-void ElementsResources::checkBlockSize(std::vector<std::unique_ptr<Entity>>& entities, int numElements)
+bool ElementsResources::checkBlockSize_reduce(std::vector<std::unique_ptr<Entity>>& entities, int numElements)
 {
 	if (entities.size() > numElements) {
-		entities.begin()->get()->disable();
+		return true;
 	}
+	else return false;
 }
 
 //--- ADD ELEMENT -------------------------------------------------

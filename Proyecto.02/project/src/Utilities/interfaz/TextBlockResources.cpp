@@ -67,12 +67,14 @@ bool TextBlockResources::checkLineSize(std::string line, LineColor type, Resourc
 string TextBlockResources::cutLine(string line)
 {
 	string cut;
-	if (line.at(lineLetters_) != ' ' && line.at(size_t(lineLetters_) + 1) != ' ') {
-		string aux = line.substr(0, lineLetters_);
-		size_t n = aux.rfind(' ', lineLetters_);
-		cut = aux.substr(0, n + 1);
+	if (line.size() > lineLetters_) {
+		if (line.at(lineLetters_ - 2.0) != ' ' && line.at(lineLetters_ - 1.0) != ' ' || line.at(lineLetters_ - 1.0) != ' ' && line.at(lineLetters_) != ' ') {
+			string aux = line.substr(0, lineLetters_);
+			size_t n = aux.rfind(' ', lineLetters_);
+			cut = aux.substr(0, n + 1);
+		}
 	}
-	else {
+	if (cut == "") {
 		cut = line.substr(0, lineLetters_);
 	}
 	return cut;
@@ -84,4 +86,60 @@ string TextBlockResources::formatLine(string line)
 	if (line.front() == ' ') line.erase(line.begin());
 	if (line.size() < lineLetters_) line.resize(lineLetters_, ' ');
 	return line;
+}
+
+//--- FILES -----------------------------------------------------------------------------
+
+vector<string> TextBlockResources::readFile(string const& file)
+{
+	vector<string> text;
+
+	//ifstream fe("C:/ruta/archivo.txt");
+	ifstream input;
+	input.open(file);
+
+	string cadena = "";
+	if (!input.is_open()) throw("No se encuentra el fichero");
+	else {
+		while (!input.eof()) {
+			string line = "";
+			getline(input, line);
+
+			text.push_back(line);
+
+			cout << line << endl;
+		}
+	}
+	input.close();
+	//system("pause");
+
+	return text;
+}
+
+void TextBlockResources::addText(vector<string> const& text, src::FontId font)
+{
+	bool title_done = false;
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (!title_done) {
+			clean_n_addLine(text[i], LineColor::White, true, src::ConsoleBO);
+			title_done = true;
+		}
+		else add(text[i], LineColor::White, src::ConsoleBO);
+	}
+}
+
+void TextBlockResources::writeText(string file, location lo, src::FontId font)
+{
+	if (lo == location::SPAIN) { 
+		file = path + "es/" + file; }
+	else if (lo == location::ENGLAND) { 
+		file = path + "en/" + file; }
+
+	//removeEntities();
+	cleanALL(mngr_->entities);
+	vector<string> text = readFile(file);
+	addText(text, font);
+
+	numLines_ = mngr_->entities.size();
 }

@@ -70,6 +70,7 @@ public:
 	static void equip(Interfaz* app, bool isWeapon, int itemid, int heroid);
 	static void unequip(Interfaz* app, bool isWeapon, int heroid);
 	static void closeMessage();
+	static void closeText();
 	static void resumeGame(Interfaz* app);
 	static void backToMaze(Interfaz* app);
 	// retroceder panel

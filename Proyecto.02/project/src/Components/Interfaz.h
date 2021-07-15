@@ -66,6 +66,8 @@ private:
     const uint VOLUME_BAR_MAX = 400;
     int* gameVolume;
     int* gameSound;
+
+    location lo_;
     
 public:
     Interfaz(InterfazManager* i, SDLGame* g) :
@@ -77,6 +79,7 @@ public:
     {
         gameVolume = new int(game_->getAudioMngr()->INITIAL_GAME_VOLUME);
         gameSound = new int(game_->getAudioMngr()->INITIAL_GAME_SOUND);
+        lo_ = location::ENGLAND;
     };
     virtual ~Interfaz();
     void createPausePanel();
@@ -118,4 +121,6 @@ public:
     void setIsItemToEquipAWeapon(bool isItemToEquipAWeapon_) { isItemToEquipAWeapon = isItemToEquipAWeapon_; }
     void enemyDead(int indice);
     void closeChest();
+
+    void set_location(location lo) { lo_ = lo; };
 };

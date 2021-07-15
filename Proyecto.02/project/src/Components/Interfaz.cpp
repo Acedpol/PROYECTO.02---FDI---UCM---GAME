@@ -673,7 +673,7 @@ void Interfaz::createMenuPrincipal()
     dest.y = pan.lcy;
     p->addButton(iManager->addButton<ButtonMenu>(dest, src::quit, accionMenu::quit, this));
 
-    TheElementalMaze::instance()->addComponent<Text>(game_, "1. Bienvenida.txt", location::ENGLAND);
+    //TheElementalMaze::instance()->addComponent<Text>(game_, "1. Bienvenida.txt", location::ENGLAND);
 }
 
 void Interfaz::createLobby() // botones principales
@@ -749,7 +749,7 @@ void Interfaz::createLobby() // botones principales
 
     p->addButton(iManager->addButton<ButtonMenu>(Vector2D(48, 48), 40, 40, src::close, accionMenu::backToMenu, this));
 
-    /*TheElementalMaze::instance()->addComponent<Text>(game_, "testing.txt", location::SPAIN);*/
+    TheElementalMaze::instance()->addComponent<Text>(game_, "testing.txt", location::SPAIN);
 }
 
 void Interfaz::createShop() // tienda con heroes y objetos

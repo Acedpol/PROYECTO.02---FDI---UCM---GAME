@@ -160,6 +160,7 @@ GameState TheElementalMaze::gameState()
 void TheElementalMaze::changeState(GameState state)
 {
 	stManager_->changeState(state);
+	if (hasComponent(ecs::Text)) removeComponent(ecs::Text);
 
 	if (state == GameState::END_EXPLORING)
 		nextLevel();

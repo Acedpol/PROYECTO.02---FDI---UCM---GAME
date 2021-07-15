@@ -31,7 +31,7 @@ void ObjectChest::Init()
 
 void ObjectChest::update()
 {
-	ElementsResources::checkBlockSize(entities, numItems_);
+	if (ElementsResources::checkBlockSize_reduce(entities, numItems_)) removeEntity(entities.begin()->get());
 	scroll(marco(), tuppleLimits(), entities, topElement().h, tuppleEspaces().getRight() + tuppleBorders().getRight());
 	//EntityManager::update();
 	//move();

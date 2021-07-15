@@ -58,7 +58,7 @@ public:
 		delete tex_;
 		tex_ = nullptr;
 	};
-	virtual void init(SDL_Rect size, string line, const SDL_Color& color, bool isTitle = false);
+	virtual void init(SDL_Rect size, string line, const SDL_Color& color, bool isTitle = false, Resources::FontId font = src::ConsoleBO);
 	virtual void init(Vector2D pos, uint ancho, uint alto, string line, Resources::FontId font, const SDL_Color& color);
 	virtual void init(SDL_Rect size, string line, Resources::FontId font, const SDL_Color& color);
 

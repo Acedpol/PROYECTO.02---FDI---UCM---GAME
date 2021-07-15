@@ -44,7 +44,7 @@ protected:
 	void draw(const std::vector<std::unique_ptr<Entity>>& entities, Tupple limits);
 
 	// checks the block size, if it exceeds the limit, the first line inserted will be delete
-	virtual void checkBlockSize(std::vector<std::unique_ptr<Entity>> &entities, int numElements);
+	bool checkBlockSize_reduce(std::vector<std::unique_ptr<Entity>> &entities, int numElements);
 
 	// checks if the element is inside the limits
 	bool checkTopDownMax(double y, Tupple limits);

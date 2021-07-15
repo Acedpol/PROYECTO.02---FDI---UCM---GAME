@@ -551,6 +551,12 @@ void callbacks::closeMessage()
 	std::cout << "saliendo del mensaje del tutorial" << std::endl;
 }
 
+void callbacks::closeText()
+{
+	TheElementalMaze::instance()->removeComponent(ecs::Text);
+	std::cout << "saliendo del bloque de texto" << std::endl;
+}
+
 void callbacks::resumeGame(Interfaz* app)
 {
 	app->removePanel(PausePanel);

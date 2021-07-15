@@ -90,6 +90,7 @@
     <ClCompile Include="src\Structures\Vector2D.cpp" />
     <ClCompile Include="src\Managers\TheElementalMaze.cpp" />
     <ClCompile Include="src\Utilities\textures_box.cpp" />
+    <ClCompile Include="src\Components\Paneles\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\Paneles\DadosP.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\Utilities\usings.h" />
     <ClInclude Include="src\Structures\Vector2D.h" />
     <ClInclude Include="src\Managers\TheElementalMaze.h" />
+    <ClInclude Include="src\Components\Paneles\Text.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\jsons\heroes.json" />

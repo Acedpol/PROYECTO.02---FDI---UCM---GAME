@@ -15,6 +15,12 @@
 #include <assert.h>
 #include <Windows.h>
 
+const string path = "project/resources/languages/";
+enum class location {
+	SPAIN,
+	ENGLAND
+};
+
 using namespace std;
 
 class SDLGame {

@@ -1,17 +1,14 @@
-#pragma region TextBlock
+#pragma once
 #include "../ecs/Manager.h"
 #include "../Utilities/interfaz/TextBlockResources.h"
 #include "../Managers/game/TextBlockManager.h"
 #include "../Templates/interfaz/ObjectPanel.h"
 
-
-const int NUM_LINES = 20;
-
 class TextBlock : public TextBlockManager, public ObjectPanel, public TextBlockResources
 {
 private:
 	Entity* fondo_ = nullptr;
-	int numLines_ = NUM_LINES;
+	uint set_NumLetterInARow();
 
 public:
 	TextBlock(SDLGame* game) : TextBlockManager(game) {};
@@ -25,6 +22,9 @@ public:
 	void update() override;
 	void draw() override;
 
-};
+protected:
+	// -----
+	void setFondo(src::TextureId image);
+	void initByFile(string const& file, location lo, src::FontId font = src::ConsoleBO);
 
-#pragma endregion
+};

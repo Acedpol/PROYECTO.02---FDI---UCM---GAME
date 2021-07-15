@@ -1,4 +1,4 @@
-#pragma region TextBlock
+#pragma once
 #include "../ecs/Manager.h"
 #include "../Utilities/interfaz/TextBlockResources.h"
 #include "../Managers/game/TextBlockManager.h"
@@ -25,6 +25,7 @@ public:
 	void update() override;
 	void draw() override;
 
+protected:
 	// -----
 	void setFondo(src::TextureId image);
 	void initByFile(string const& file);
@@ -32,5 +33,3 @@ public:
 	vector<string> readFile(string const& file);
 	void addText(vector<string> const& text);
 };
-
-#pragma endregion

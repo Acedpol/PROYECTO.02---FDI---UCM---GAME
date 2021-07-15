@@ -4,12 +4,12 @@
 
 //--- PUBLIC -------------------------------------------------------------------------
 
-void TextBlockResources::Init(SDL_Rect bottom_elem, tb_Mngr* mngr)
+void TextBlockResources::Init(SDL_Rect bottom_elem, tb_Mngr* mngr, set_FE way)
 {
 	bottomElement_ = bottom_elem; 
 	mngr_ = mngr;
 	LineTypes::Init();
-	ElementsResources::Init(set_FE::DOWN);
+	ElementsResources::Init(way);
 }
 
 // checks if they are in their standar position and then insert a new line

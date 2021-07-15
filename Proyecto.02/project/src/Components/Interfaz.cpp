@@ -11,6 +11,7 @@
 #include "Laberinto.h"
 #include "Tutorial.h"
 #include "Rectangle.h"
+#include "Paneles/Text.h"
 #include "Paneles/PanelTurns.h"
 #include "Paneles/PanelDnD.h"
 #include "Paneles/PanelDesc.h"
@@ -671,6 +672,8 @@ void Interfaz::createMenuPrincipal()
     // QUIT
     dest.y = pan.lcy;
     p->addButton(iManager->addButton<ButtonMenu>(dest, src::quit, accionMenu::quit, this));
+
+    TheElementalMaze::instance()->addComponent<Text>(game_, "1. Bienvenida.txt", location::ENGLAND);
 }
 
 void Interfaz::createLobby() // botones principales
@@ -746,7 +749,7 @@ void Interfaz::createLobby() // botones principales
 
     p->addButton(iManager->addButton<ButtonMenu>(Vector2D(48, 48), 40, 40, src::close, accionMenu::backToMenu, this));
 
-
+    /*TheElementalMaze::instance()->addComponent<Text>(game_, "testing.txt", location::SPAIN);*/
 }
 
 void Interfaz::createShop() // tienda con heroes y objetos

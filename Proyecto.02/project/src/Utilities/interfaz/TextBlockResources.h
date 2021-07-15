@@ -1,4 +1,4 @@
-#pragma region TextBlockResources
+#pragma once
 #include <string>
 #include "ElementsResources.h"
 #include "../../Managers/game/TextBlockManager.h"
@@ -14,7 +14,10 @@ class TextBlockResources : public ElementsResources, public LineTypes
 {
 public:
 	TextBlockResources() : ElementsResources(), bottomElement_(), limits_() {};
-	void Init(SDL_Rect bottom_elem, tb_Mngr* mngr);
+	virtual ~TextBlockResources() {};
+	void Init(SDL_Rect bottom_elem, tb_Mngr* mngr, set_FE way);
+
+	void set_line_letters(int n) { lineLetters_ = n; };
 
 	// methods to access and interact by inserting lines
 	void add(std::string line, LineColor type, Resources::FontId font = src::ConsoleBO);
@@ -36,7 +39,7 @@ private:
 	// sets the number of letter in a line and the number of lines in a block
 	// void set_lineLetters(int width);
 	// void set_numLines(int height);		// with the account of the bottomLine
-	// void set_backGround();				// sets the background size to catch all the lines in a block	
+	// void set_backGround();				// sets the background size to catch all the lines in a block
 
 private:
 	tb_Mngr* mngr_ = nullptr;
@@ -49,5 +52,3 @@ private:
 	Tupple limits_;
 
 };
-
-#pragma endregion

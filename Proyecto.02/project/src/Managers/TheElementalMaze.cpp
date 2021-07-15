@@ -19,6 +19,7 @@
 #include "../Components/Paneles/PanelDesc.h"
 #include "../Components/Paneles/PanelDnD.h"
 #include "../Components/Paneles/PanelTurns.h"
+#include "../Components/Paneles/Text.h"
 
 TheElementalMaze* TheElementalMaze::instance_ = nullptr;
 
@@ -84,6 +85,7 @@ void TheElementalMaze::draw()
 	if (hasComponent(ecs::PanelDesc)) getComponent<PanelDesc>(ecs::PanelDesc)->draw();
 	if (hasComponent(ecs::PanelDnD)) getComponent<PanelDnD>(ecs::PanelDnD)->draw();
 	if (hasComponent(ecs::PanelTurns)) getComponent<PanelTurns>(ecs::PanelTurns)->draw();*/
+	if (hasComponent(ecs::Text)) getComponent<Text>(ecs::Text)->draw();
 	if(!animManager_->getTransition())
 		tutorial_->drawTutorial();
 }

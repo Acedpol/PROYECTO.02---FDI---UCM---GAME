@@ -7,7 +7,7 @@
 void TextBlock::Init(SDL_Panel pan)
 {
 	ObjectPanel::Init(pan);
-	TextBlockResources::Init(bottomElement(), this);
+	TextBlockResources::Init(bottomElement(), this, set_FE::DOWN);
 
 	// fondo oscuro
 	fondo_ = new Entity(game_, this);
@@ -37,9 +37,10 @@ void TextBlock::initByFile(string const& file)
 {
 	vector<string> text = readFile(file);
 
-	SDL_Panel pan = game_->relativePanel(70, 360, 630, 330, 1, 12, 10, 10);
+	SDL_Panel pan = game_->relativePanel(70, 360, 630, 330, 1, 15, 20, 10);
 	ObjectPanel::Init(pan);
-	TextBlockResources::Init(bottomElement(), this);
+	TextBlockResources::Init(bottomElement(), this, set_FE::DOWN);
+	TextBlockResources::set_line_letters(35);
 
 	// fondo oscuro
 	fondo_ = new Entity(game_, this);
@@ -79,12 +80,12 @@ vector<string> TextBlock::readFile(string const& file)
 void TextBlock::addText(vector<string> const& text)
 {
 	bool title_done = false;
-	for (size_t i = 0; i < text.size(); i++)
+	for (int i = text.size() - 1; i >= 0; i--)
 	{
 		if (!title_done) {
-			clean_n_addLine(text[i], LineColor::Black, true, src::Beaulieux);
+			clean_n_addLine(text[i], LineColor::White, true, src::ConsoleBO);
 			title_done = true;
 		}
-		else add(text[i], LineColor::Black, src::Beaulieux);
+		else add(text[i], LineColor::White, src::Beaulieux);
 	}
 }

@@ -551,9 +551,18 @@ void callbacks::closeMessage()
 	std::cout << "saliendo del mensaje del tutorial" << std::endl;
 }
 
+#include "../Components/Paneles/Text.h"
+void callbacks::createTextBox(string key)
+{
+	TheElementalMaze* tem_ = TheElementalMaze::instance();
+	if (tem_->hasComponent(ecs::Text)) tem_->removeComponent(ecs::Text);
+	tem_->addComponent<Text>(tem_->getSDLGame(), key, location::SPAIN);
+}
+
 void callbacks::closeText()
 {
 	TheElementalMaze::instance()->removeComponent(ecs::Text);
+	closeMessage();
 	std::cout << "saliendo del bloque de texto" << std::endl;
 }
 

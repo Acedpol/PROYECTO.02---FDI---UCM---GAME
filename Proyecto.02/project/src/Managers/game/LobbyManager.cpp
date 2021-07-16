@@ -55,6 +55,8 @@ void LobbyManager::backFromDungeon()
 void LobbyManager::firstLobby()
 {
 	Message m;
+	m.id_ = MsgId::_TABERNERO_;
+	TheElementalMaze::instance()->sendMsg(m);
 	m.id_ = MsgId::_BIENVENIDA_;
 	TheElementalMaze::instance()->sendMsg(m);
 	m.id_ = MsgId::_BIENVENIDA_pt2_;

@@ -760,7 +760,7 @@ void Interfaz::createLobby() // botones principales
     p->addButton(iManager->addButton<ButtonMenu>(Vector2D(48, 48), 40, 40, src::close, accionMenu::backToMenu, this));
 
     //TheElementalMaze::instance()->addComponent<Text>(game_, "testing.txt", location::SPAIN);
-    TheElementalMaze::instance()->addComponent<Text>(game_, "TEST", location::SPAIN);
+    //TheElementalMaze::instance()->addComponent<Text>(game_, "TEST", location::SPAIN);
 }
 
 void Interfaz::createShop() // tienda con heroes y objetos

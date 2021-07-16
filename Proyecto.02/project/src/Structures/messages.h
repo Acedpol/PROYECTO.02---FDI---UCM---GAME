@@ -4,6 +4,7 @@
 struct Entity;
 
 enum class MsgId : Uint8 {
+	_TABERNERO_,
 	_BIENVENIDA_,
 	_BIENVENIDA_pt2_,
 	_INTRO_,

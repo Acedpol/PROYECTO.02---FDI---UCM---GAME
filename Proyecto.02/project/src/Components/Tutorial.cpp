@@ -3,6 +3,7 @@
 #include "../Utilities/InputHandler.h"
 #include "../Utilities/SDL_macros.h"
 #include "../Templates/Resources.h"
+#include "../Templates/callbacks.h"
 #include "../GameObjects/SDL_Objects.h"
 #include "../Managers/TheElementalMaze.h"
 
@@ -10,98 +11,96 @@
 
 void TutorialManager::show(MsgId mID)
 {
+	bool isCartel = false;
 	src::TextureId id_fondo = src::TextureId();
 	src::TextureId id_cartel = src::TextureId();
 
 	switch (mID)
 	{
+	case MsgId::_TABERNERO_:
+		callbacks::createTextBox("GREETING");
+		break;
 	case MsgId::_BIENVENIDA_:
 		id_fondo = src::cinematica;
 		id_cartel = src::cartel_bienvenida_pt1;
+		isCartel = true;
 		break;
 	case MsgId::_BIENVENIDA_pt2_:
 		id_fondo = src::cinematica;
 		id_cartel = src::cartel_bienvenida_pt2;
+		isCartel = true;
 		break;
 	case MsgId::_INTRO_:
 		id_fondo = src::foco_support;
 		//id_cartel = src::;
+		isCartel = true;
 		break;
 	case MsgId::_MOVIMIENTO_:
 		id_fondo = src::foco_combate;
 		id_cartel = src::cartel_movimiento;
+		isCartel = true;
 		break;
 	case MsgId::_COFRE_:
 		id_fondo = src::cinematica;
 		id_cartel = src::cartel_cofre;
+		isCartel = true;
 		break;
 	case MsgId::_COMBATE_:
 		id_fondo = src::foco_combate;
 		id_cartel = src::cartel_combate;
+		isCartel = true;
 		break;
 	case MsgId::_INVENTARIO_:
 		id_fondo = src::foco_inventario;
 		id_cartel = src::cartel_inventario;
+		isCartel = true;
 		break;
 	case MsgId::_CONFIG_:
 		id_fondo = src::foco_inventario;
 		id_cartel = src::cartel_configuracion;
+		isCartel = true;
 		break;
 	case MsgId::_HEROES_:
 		id_fondo = src::foco_heroes;
 		id_cartel = src::cartel_heroes;
+		isCartel = true;
 		break;
 	case MsgId::_MINIMAP_:
 		id_fondo = src::foco_minimapa;
 		id_cartel = src::cartel_minimapa;
+		isCartel = true;
 		break;
 	case MsgId::_SUPPORT_:
 		id_fondo = src::foco_support;
 		id_cartel = src::cartel_support;
+		isCartel = true;
 		break;
 	case MsgId::_LOBBY_:
 		/*id_fondo = src::foco_lobby;
 		id_cartel = src::cartel_lobby;*/
+		isCartel = true;
 		break;
 	default:
 		break;
 	}
 
-	/*fondo = new SDL_Object(game_, manager_);
-	fondo->init(fondo_dest, id_fondo);
-	manager_->addEntity(fondo);
+	if (isCartel) {
+		fondo = new SDL_Object(game_, manager_);
+		fondo->init(fondo_dest, id_fondo);
 
-	cartel = new SDL_Object(game_, manager_);
-	cartel->init(cartel_dest, id_cartel);
-	manager_->addEntity(cartel);
+		cartel = new SDL_Object(game_, manager_);
+		cartel->init(cartel_dest, id_cartel);
 
-	uint size = 64;
-	SDL_Rect dest = RECT(
-		cartel_dest.x + cartel_dest.w - size,
-		cartel_dest.y + 10,
-		size,
-		size
-	);
+		uint size = 40;
+		SDL_Rect dest = RECT(
+			cartel_dest.x + cartel_dest.w - size * 3 / 2,
+			cartel_dest.y + size / 2,
+			size,
+			size
+		);
 
-	bt_exit = new ButtonMenu(game_, manager_);
-	bt_exit->init(dest, src::close, accionMenu::closeMessage);
-	manager_->addEntity(bt_exit);*/
-
-	fondo = new SDL_Object(game_, manager_);
-	fondo->init(fondo_dest, id_fondo);
-
-	cartel = new SDL_Object(game_, manager_);
-	cartel->init(cartel_dest, id_cartel);
-
-	uint size = 40;
-	SDL_Rect dest = RECT(
-		cartel_dest.x + cartel_dest.w - size * 3 / 2,
-		cartel_dest.y + size / 2,
-		size,
-		size
-	);
-
-	bt_exit = manager_->addButton<ButtonCloseMessage>(dest, src::close);
+		bt_exit = manager_->addButton<ButtonCloseMessage>(dest, src::close);
+	}
 }
 
 //-------------------------------------------------------------
@@ -196,9 +195,11 @@ void TutorialManager::actionMsg()
 
 // exit message
 void TutorialManager::exitMessage() {
-	delete fondo; fondo = nullptr;
-	delete cartel; cartel = nullptr;
-	bt_exit->disable(); bt_exit = nullptr;
+	if (bt_exit != nullptr) {
+		delete fondo; fondo = nullptr;
+		delete cartel; cartel = nullptr;
+		bt_exit->disable(); bt_exit = nullptr;
+	}
 	on_receive_message = false;
 	setUIContinue();
 	achievementsMap_[activeMsg] = true;

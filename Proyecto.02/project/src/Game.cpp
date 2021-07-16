@@ -76,7 +76,8 @@ void Game::initGame()
 	tex_->render(dest);
 	SDL_RenderPresent(game_->getRenderer());
 
-	game_->initResources();
+	game_->initResources(location::ENGLAND); // game resources
+
 	entityManager_ = new EntityManager(game_);
 	game_->getAudioMngr()->setMusicVolume(game_->getAudioMngr()->INITIAL_GAME_VOLUME);
 	game_->getAudioMngr()->setChannelVolume(game_->getAudioMngr()->INITIAL_GAME_SOUND);

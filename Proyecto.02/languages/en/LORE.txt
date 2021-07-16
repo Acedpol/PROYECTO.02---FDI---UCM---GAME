@@ -1,0 +1,99 @@
+###################################
+# Indice
+# 1. Bienvenida
+# 2. Intro tutorial
+# 3. Entrada laberinto
+# 4. Movimiento
+# 5. Combate
+# 6. Despues del primer combate
+# 7. Cofre
+# 8. Dracolich
+# 9. Death knight
+# 10. Final del juego
+###################################
+
+# 1. Bienvenida
+WELCOME="Greetings, adventurers.\
+\
+My name is- Well, I don't think my name is relevant right now. All you need to know is that I, the almighty Archmage of the Keep, have decided to give you a chance to abandon your insignificant lives and embrace greatness, on an adventure brimming with glory and riches.\
+\
+Your only job will be to eliminate the source of evil power emanating from the catacombs below the Keep and retrieve the trigger from that source, so that I, its rightful owner, can secure it. In exchange for your services, you will be generously rewarded with the treasures you find during your exploration.\
+\
+To be honest, it's not like you could say no either. After all, the executioner told me that they planned to get rid of you in a few days due to a shortage of cells. Apparently there has been an increase in revolts among the plebs because we nobles do not care about their welfare. Can you believe it? Fallacies, each and every one of them Of course I worry! After all, I have paid a large amount of coins for your release. I wouldn't want to have to hire more people, so please be careful not to die inside the dungeon.\
+\
+Sincerely, the Archmage."
+
+# 2. Intro tutorial
+TUTORIAL="What do you mean, what should you do? Weren't you supposed to be brave adventurers, hardened in a thousand battles?\
+\
+How were you farmers?\
+\
+Damn, when I hired you I didn't do it with the idea of having to explain how to be adventurers.\
+\
+Anyway, with the basic training you have received and my valuable lessons, I hope you are already prepared for the worst, well ... well, you will discover it yourself.\
+\
+Use with care the powers that according to your predominant character I have granted you."
+
+# 3. Entrada laberinto
+ENTRANCE="Ah, finally! I can already see the power that comes from the orb of the Lich, its infinite potential ...\
+\
+And how he should be hidden in the secret chambers of the Keep, far from everyone's reach. So go ahead, let's not waste time anymore."
+
+# 4. Movimiento
+MOVEMENT="Anyway, we will have to start with the basics. Are you able to see that panel with a green light point?\
+\
+That is the Eye of the Pattern, a powerful artifact that will allow you to see the areas you have explored in the labyrinth and your current position. In the past it also served to detect enemies, but one of our apprentices threw the Eye down the stairs and, well, you can imagine the rest.\
+\
+As for how to navigate the maze... Well, these are pretty extreme corridors. You will have to move forward and, in the case of wanting to change direction, you will have to turn to the right or left.\
+\
+Well, what are you waiting for? We don't have all day, go ahead."
+
+# 5. Combate
+FIGHT="Watch out, an enemy!\
+\
+Okay, keep calm. The most important thing is to attack with head, using your weapons to perform physical attacks or using magic spells. Remember that spells need your magic essence to be able to be used, so try not to use them too much. Another option you have is to flee or let another attack, although be careful because the enemy could be the next to attack.\
+\
+Taking into account that you would have to fight, I cast a spell that allows you to visualize your state of health and magical essence, in addition to those of the enemy. Nor let us ignore your levels of learning, which will indicate what you have left to improve."
+
+# 6. Despues del primer combate
+ENDFIGHT="I have to admit, it was a good fight.\
+\
+Perhaps you should check your health and magic essence levels, and restore them with potions if any are low.\
+\
+Oh, didn't I mention it to you? You have two different types of potions at your disposal: the red one is used to heal your health, and the blue one to heal your essence. But remember: they are limited and only serve one person. Try not to waste them on nonsense."
+
+# 7. Cofre
+CHEST="Why have you stopped?\
+\
+A chest? Like a chest? We don't have time for this and- Damn, I knew I didn't have to hire farmers. As soon as you see an opportunity to get rich, you forget about everything else\
+\
+How did I promise you all the riches you will find? Yes, I guess I did.\
+\
+Do you see that key that just appeared in front of you? It is the Master Key, an ancient artifact that will allow you to unlock the chests that you find in the dungeon.\
+\
+If you want to see what you have achieved, use your inventory."
+
+# 8. Dracolich
+DRACOLICH="A DRAGON?\
+\
+Why is there a dragon in the catacombs in the first place?\
+\
+And secondly, I know that it is a dragon and that trying to kill a dragon is similar to a death sentence, but we are too close to the Lich.\
+\
+Turning around is not worth it, so kill that dragon."
+
+# 9. Death knight
+DEATHKNIGHT="A risen knight of the Kingsguard? What we needed.\
+\
+He won't let us move on, so we'll have to get rid of him.\
+\
+Hopefully, they buried him with all of his valuables so we can get a lot of profit from defeating him."
+
+# 10. Final del juego
+ENDGAME="Hello? Does anybody hear me?\
+\
+Are you the group of adventurers that has finished off the Lich and recovered the orb of power?\
+\
+Wonderful, this ... At first I thought to thank you for your contribution, but a little problem has arisen: Our Archmage has decided to use the orb, so now he is a Lich and has restored the labyrinth and- Can you recover the core again? evil one? I have just been given the position of Archmage, and the paperwork makes it quite difficult to be able to go in person to solve the problem, so ... I'm counting on you, partner\
+\
+Do not disappoint me!"

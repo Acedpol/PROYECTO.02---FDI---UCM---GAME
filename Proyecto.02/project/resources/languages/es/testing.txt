@@ -1,1 +1,0 @@
-Esto es una mera prueba para ver si funciona la lectura de texto.

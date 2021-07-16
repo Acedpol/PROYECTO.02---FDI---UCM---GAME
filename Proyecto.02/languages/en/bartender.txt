@@ -1,0 +1,4 @@
+GREETING="Good evening, I'm the bartender \
+and I'm here to serve you, great Arch-Mage. \
+\
+What do you want?"

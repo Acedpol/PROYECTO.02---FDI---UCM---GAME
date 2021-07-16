@@ -1,0 +1,4 @@
+GREETING="Buenas tardes, soy el tabernero\
+y estoy aquí para servirle, gran Archi-Mago.\
+\
+¿Qué desea?"

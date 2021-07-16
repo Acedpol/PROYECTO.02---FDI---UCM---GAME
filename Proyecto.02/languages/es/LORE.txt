@@ -1,0 +1,99 @@
+###################################
+# Indice
+# 1. Bienvenida
+# 2. Intro tutorial
+# 3. Entrada laberinto
+# 4. Movimiento
+# 5. Combate
+# 6. Despues del primer combate
+# 7. Cofre
+# 8. Dracolich
+# 9. Death knight
+# 10. Final del juego
+###################################
+
+# 1. Bienvenida
+WELCOME="Saludos, aventureros.\
+\
+Mi nombre es- Bueno, no creo que mi nombre sea relevante en estos momentos. Lo único que necesitáis saber es que yo, el todopoderoso Archimago del Torreón, ha decidido daros una oportunidad de abandonar vuestras insignificantes vidas y abrazar la grandeza, en una aventura rebosante de gloria y riquezas.\
+\
+Vuestro único trabajo será eliminar la fuente de poder maligna que mana desde las catacumbas que hay debajo del Torreón y recuperar el desencadenante de dicha fuente, para que yo, su legítimo dueño, pueda ponerla a buen recaudo. A cambio de vuestros servicios, seréis generosamente recompensados con los tesoros que halléis durante vuestra exploración.\
+\
+Siendo sinceros, tampoco es que pudieseis decir que no. Después de todo, el verdugo me comentó que planeaban deshacerse de vosotros dentro de pocos días por escasez de celdas. Al parecer ha habido un incremento de revueltas entre la plebe porque los nobles no nos preocupamos por su bienestar ¿Os lo podéis creer? Falacias, todas y cada una de ellas ¡Por supuesto que me preocupo! Después de todo, he pagado una gran cantidad de monedas por vuestra liberación. No me gustaría tener que contratar a más gente, así que por favor, procurad no morir dentro de la mazmorra.\
+\
+Atentamente: el Archimago."
+
+# 2. Intro tutorial
+TUTORIAL="¿A qué os referís con que debéis hacer? ¿No se suponía que erais aguerridos aventureros, curtidos en mil batallas?\
+\
+¿Cómo que erais granjeros?\
+\
+Maldición, cuando os contraté no lo hice con la idea de tener que explicaros cómo ser aventureros.\
+\
+En fin, con el basico entrenamiento que habeis recibido y mis valiosas lecciones, espero que ya estéis preparados para lo peor, pues... bueno mejor ya lo iréis descubriendo vosotros mismos.\
+\
+Usad con cuidado los poderes que según vuestro carácter predominante os he concedido."
+
+# 3. Entrada laberinto
+ENTRANCE="¡Ah, por fin! Ya puedo notar el poder que procede del orbe del Lich, su infinito potencial...\
+\
+Y como debería estar escondido en las cámaras secretas del Torreón, lejos del alcance de todos. Así que adelante, no perdamos más el tiempo."
+
+# 4. Movimiento
+MOVEMENT="En fin, tendremos que comenzar con lo básico ¿Sois capaz de ver ese panel con  un punto luminoso verde?\
+\
+Ese es el Ojo del Patrón, un poderoso artefacto que os permitirá ver las zonas que habéis explorado del laberinto y vuestra posición actual. En el pasado también servía para detectar a los enemigos, pero uno de nuestros aprendices tiró el Ojo por las escaleras y, bueno, podéis imaginar el resto.\
+\
+En cuanto a cómo desplazarse por el laberinto... Bueno, son pasillos bastante extremos. Tendréis que avanzar hacia adelante y, en el caso de querer cambiar de dirección, tendréis que girar hacia la derecha o izquierda.\
+\
+Bueno ¿A qué estáis esperando? No tenemos todo el día, adelante."
+
+# 5. Combate
+FIGHT="¡Cuidado, un enemigo!\
+\
+Vale, mantened la calma. Lo más importante es atacar con cabeza, usando vuestras armas para realizar ataques físicos o usando hechizos mágicos. Recordad que los hechizos necesitan vuestra esencia mágica para poder ser utilizados, así que procurad no usarlos demasiado. Otra opción que tenéis es huir o dejar que otro ataque, aunque ten cuidado porque el enemigo podría ser el siguiente en atacar.\
+\
+Teniendo en cuenta que tendríais que combatir, os lancé un hechizo que os permite visualizar vuestro estado de salud y esencia mágica, además de los del enemigo. Tampoco ignoremos vuestros niveles de aprendizaje, los cuales os indicarán lo que os queda para mejorar."
+
+# 6. Despues del primer combate
+ENDFIGHT="Tengo que admitirlo, ha sido un buen combate.\
+\
+Quizás deberíais revisar vuestros niveles de salud y esencia mágica, y restaurarlos con pociones si alguno es bajo.\
+\
+¿Oh, no os lo mencioné? Tenéis dos tipos diferentes de pociones a vuestra disposición: la roja sirve para curar vuestra salud, y la azul para curar vuestra esencia. Pero recordad: son limitadas y solo sirven para una sola persona. Procurad no malgastarlas en tonterías."
+
+# 7. Cofre
+CHEST="¿Por qué os habéis parado?\
+\
+¿Un cofre? ¿Cómo que un cofre? No tenemos tiempo para esto y- Maldición, sabía que no tenía que haber contratado a granjeros. En cuanto veis una oportunidad devolveros ricos, os olvidáis de todo lo demás.\
+\
+¿Cómo que os prometí todas las riquezas que encontrarais? Sí, supongo que lo hice.\
+\
+¿Veis esa llave que acaba de aparecer delante de vosotros? Es la Llave Maestra, un antiguo artefacto que os permitirá desbloquear los cofres que halléis en la mazmorra.\
+\
+Si queréis comprobar lo que habéis conseguido, utilizad vuestro inventario."
+
+# 8. Dracolich
+DRACOLICH="¿UN DRAGÓN?\
+\
+En primer lugar ¿Por qué hay un dragón en las catacumbas?\
+\
+Y en segundo lugar, sé que es un dragón y que intentar acabar con un dragón es similar a una sentencia de muerte, pero estamos demasiado cerca del Lich.\
+\
+Dar media vuelta no merece la pena, asi que matad a ese dragón."
+
+# 9. Death knight
+DEATHKNIGHT="¿Un caballero de la Guardia Real resucitado? Lo que nos faltaba.\
+\
+No nos dejará seguir avanzando, así que tendremos que deshacernos de él.\
+\
+Con suerte, lo enterraron con todos sus objetos de valor así que podremos obtener muchas ganancias con su derrota."
+
+# 10. Final del juego
+ENDGAME="¿Hola? ¿Alguien me escucha?\
+\
+¿Sois el grupo de aventureros que ha acabado con el Lich y recuperado el orbe de poder?\
+\
+Maravilloso, esto... En un principio pensaba daros las gracias por vuestra contribución, pero ha surgido un pequeño problema: Nuestro Archimago ha decidido usar el orbe, asi que ahora es un Lich y ha restaurado el laberinto y- ¿Podéis volver a recuperar el núcleo maligno? Me acaban de dar el cargo de Archimago, y el papeleo hace que sea bastante complicado poder ir en persona a resolver el problema, asi que... Cuento contigo, compañero.\
+\
+¡No me decepciones!"

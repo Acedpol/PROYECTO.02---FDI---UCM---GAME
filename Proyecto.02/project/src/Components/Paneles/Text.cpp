@@ -9,7 +9,7 @@ void Text::init()
 {
 	// relative sizes
 	MousePanelMecanics::Init(4, set_FE::DOWN);
-	TextBlock::initByFile(file_, lo_);
+	TextBlock::initByFile(file_);
 	bt_exit = new ButtonCloseText(Component::game_, nullptr);
 	SDL_Rect dest = RECT(
 		marco_.x + marco_.w - Component::game_->setHorizontalScale(50),

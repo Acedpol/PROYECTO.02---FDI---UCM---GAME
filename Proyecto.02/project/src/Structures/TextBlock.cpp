@@ -51,6 +51,24 @@ void TextBlock::initByFile(string const& file, location lo, src::FontId font)
 	TextBlockResources::resetToTop(entities, topElement(), tuppleLimits());
 }
 
+void TextBlock::initByFile(string const& key, src::FontId font)
+{
+	SDL_Panel pan = game_->relativePanel(70, 360, 950, 330, 1, 15, 30, 10);
+	ObjectPanel::Init(pan);
+	TextBlockResources::Init(bottomElement(), this, set_FE::DOWN);
+	TextBlockResources::set_line_letters(set_NumLetterInARow());
+
+	// fondo oscuro
+	fondo_ = new Entity(game_, this);
+	SDL_Rect dest = RECT(pan.x, pan.y, pan.w, pan.h);
+	fondo_->addComponent<Transform>(dest);
+	fondo_->addComponent<Image>(game_->getTextureMngr()->getTexture(src::Cartelito));
+	
+	TextBlockResources::writeText(game_->getLocale()->format(key), font);
+	TextBlockResources::resetToBottom(entities, bottomElement(), tuppleLimits());
+	TextBlockResources::resetToTop(entities, topElement(), tuppleLimits());
+}
+
 uint TextBlock::set_NumLetterInARow()
 {	
 	return uint(marco_.w * 35.0 / game_->setHorizontalScale(630));

@@ -122,10 +122,10 @@ void TextBlockResources::addText(vector<string> const& text, src::FontId font)
 	for (int i = 0; i < text.size(); i++)
 	{
 		if (!title_done) {
-			clean_n_addLine(text[i], LineColor::White, true, src::ConsoleBO);
+			clean_n_addLine(text[i], LineColor::White, true, font);
 			title_done = true;
 		}
-		else add(text[i], LineColor::White, src::ConsoleBO);
+		else add(text[i], LineColor::White, font);
 	}
 }
 
@@ -140,6 +140,15 @@ void TextBlockResources::writeText(string file, location lo, src::FontId font)
 	cleanALL(mngr_->entities);
 	vector<string> text = readFile(file);
 	addText(text, font);
+
+	numLines_ = mngr_->entities.size();
+}
+
+void TextBlockResources::writeText(string text, src::FontId font)
+{
+	cleanALL(mngr_->entities);
+
+	addLine(text, LineColor::White, font);
 
 	numLines_ = mngr_->entities.size();
 }

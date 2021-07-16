@@ -64,7 +64,7 @@ void SDLGame::set_location(location lo)
 		locale_.init("en");		
 	}
 	locale_.load();
-	string test = locale_.format("TEST");
+	//string test = locale_.format("TEST");
 }
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :

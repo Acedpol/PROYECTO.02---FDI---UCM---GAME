@@ -24,7 +24,10 @@ public:
 	// methods to access and interact by inserting lines
 	void add(std::string line, LineColor type, Resources::FontId font = src::ConsoleBO);
 	void clean_n_addLine(std::string line, LineColor type, bool makeTitle = false, Resources::FontId font = src::ConsoleBO);
+	
+	// text files load methods
 	void writeText(string file, location lo, src::FontId font = src::ConsoleBO);
+	void writeText(string key, src::FontId font = src::ConsoleBO);
 
 private:
 	// main way to insert a line

@@ -26,5 +26,6 @@ protected:
 	// -----
 	void setFondo(src::TextureId image);
 	void initByFile(string const& file, location lo, src::FontId font = src::ConsoleBO);
+	void initByFile(string const& file, src::FontId font = src::ConsoleBO);
 
 };

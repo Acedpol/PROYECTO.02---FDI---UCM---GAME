@@ -15,6 +15,8 @@
 #include <assert.h>
 #include <Windows.h>
 
+#include "LocaleManager.h"
+
 const string path = "languages/";
 enum class location {
 	SPAIN,
@@ -110,7 +112,7 @@ public:
 	}
 
 	// pasa a  ser publico para poder segmentar el inicio
-	void initResources(); // initialize the SDLResources object with the data at the top of this file
+	void initResources(location lo = location::SPAIN); // initialize the SDLResources object with the data at the top of this file
 
 	// cambio a dimensiones de la pantalla actual
 	double setVerticalScale(double num) { return num * getWindowHeight() / 1050; };
@@ -140,6 +142,10 @@ public:
 		double bw = 0, double bh = 0
 	);
 
+	// Get or Set the Locale instance
+	Locale* getLocale() { return &locale_; };
+	void set_location(location lo);
+
 	bool fullscr_ = false;
 	
 private:
@@ -157,6 +163,10 @@ protected:
 
 	SDL_Window* window_; // the window
 	SDL_Renderer* renderer_;  // the renderer
+
+	location lo_;
+	LocaleManager localeManager_{};
+	Locale locale_{ localeManager_ };
 
 	string windowTitle_; // window title
 	int width_; // window width

@@ -55,6 +55,18 @@ SDL_Panel SDLGame::relativePanel(double x, double y, double w, double h, int r, 
 	return panel;
 }
 
+void SDLGame::set_location(location lo)
+{
+	if (lo == location::SPAIN) {
+		locale_.init("es");
+	}
+	else if (lo == location::ENGLAND) {
+		locale_.init("en");		
+	}
+	locale_.load();
+	string test = locale_.format("TEST");
+}
+
 SDLGame::SDLGame(string windowTitle, int width, int height) :
 		windowTitle_(windowTitle), width_(width), height_(height) {
 	initSDL();
@@ -106,7 +118,9 @@ void SDLGame::closeSDL() {
 	SDL_Quit();
 }
 
-void SDLGame::initResources() {
+void SDLGame::initResources(location lo) 
+{
+	set_location(lo); // drakhtar-i18n = intenationalization & localization
 
 	random_ = new SRandBasedGenerator();
 	random_->init();

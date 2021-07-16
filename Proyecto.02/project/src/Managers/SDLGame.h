@@ -15,7 +15,7 @@
 #include <assert.h>
 #include <Windows.h>
 
-const string path = "project/resources/languages/";
+const string path = "languages/";
 enum class location {
 	SPAIN,
 	ENGLAND
